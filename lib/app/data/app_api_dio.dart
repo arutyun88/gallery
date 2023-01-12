@@ -29,4 +29,13 @@ class AppApiDio extends AppApi {
   void _deleteInterceptor(Type type) {
     dio.interceptors.removeWhere((element) => element.runtimeType == type);
   }
+
+  @override
+  Future<Response> createAccount(Map<String, dynamic> data) {
+    try {
+      return dio.post(AppApi.createAccountPath, data: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }
