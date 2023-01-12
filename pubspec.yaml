@@ -1,0 +1,37 @@
+name: gallery
+description: Gallery Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+  flutter_svg: ^1.1.6
+  get_it: ^7.2.0
+  injectable: ^1.5.3
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  json_serializable: ^6.5.4
+
+  dio: ^4.0.6
+  pretty_dio_logger: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+  injectable_generator: ^1.5.3
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
