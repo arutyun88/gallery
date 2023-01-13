@@ -38,4 +38,13 @@ class AppApiDio extends AppApi {
       rethrow;
     }
   }
+
+  @override
+  Future<Response> token(Map<String, dynamic> data) {
+    try {
+      return dio.get(AppApi.tokenPath, queryParameters: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }
