@@ -5,11 +5,13 @@ import 'package:gallery/app/domain/app_api.dart';
 import 'package:gallery/app/domain/entity/account_create_entity.dart';
 import 'package:gallery/app/domain/entity/token_entity.dart';
 import 'package:gallery/app/domain/repository/auth_repository.dart';
+import 'package:injectable/injectable.dart';
 
 const int userId = 17;
 const String randomId = '2e4kftp98s2sgc88wskcsccwwo8kkkcssw4c0g00s0004kggwo';
 const String secret = '2ef53x5qc7wgksc8cssso0kso884kccgcw0wsg8wc0w4scc4w8';
 
+@Singleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final AppApi _api;
 

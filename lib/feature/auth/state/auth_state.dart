@@ -8,7 +8,7 @@ class AuthState with _$AuthState {
 
   factory AuthState.waiting() = _AuthStateWaiting;
 
-  factory AuthState.error() = _AuthStateError;
+  factory AuthState.error(ErrorEntity error) = _AuthStateError;
 
   factory AuthState.fromJson(Map<String, dynamic> json) =>
       _$AuthStateFromJson(json);
