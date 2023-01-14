@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gallery/app/ui/component/date_text_formatter.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
 import 'package:gallery/app/ui/const/app_text_style.dart';
 
@@ -10,6 +11,7 @@ class CustomTextField extends StatelessWidget {
     this.type = TextInputType.text,
     this.obscure = false,
     required this.onChanged,
+    this.isDate = false,
   }) : super(key: key);
 
   final String labelText;
@@ -17,12 +19,14 @@ class CustomTextField extends StatelessWidget {
   final TextInputType type;
   final bool obscure;
   final Function(String) onChanged;
+  final bool isDate;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextField(
+        inputFormatters: isDate ? [DateTextFormatter()] : null,
         onChanged: onChanged,
         autocorrect: false,
         obscureText: obscure,

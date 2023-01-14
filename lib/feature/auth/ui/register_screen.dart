@@ -110,6 +110,7 @@ class _RegisterScreenState extends State<_RegisterScreen> {
                         labelText: AppTexts.birthdayFieldLabel,
                         controller: _birthdayController,
                         type: TextInputType.number,
+                        isDate: true,
                       ),
                       CustomTextField(
                         onChanged: _fieldOnChanged,

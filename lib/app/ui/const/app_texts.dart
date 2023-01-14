@@ -12,7 +12,7 @@ abstract class AppTexts {
   static const usernameLabel = 'Username';
   static const passwordLabel = 'Password';
   static const usernameFieldLabel = 'Username*';
-  static const birthdayFieldLabel = 'Birthday';
+  static const birthdayFieldLabel = 'Birthday yyyy-mm-dd';
   static const emailFieldLabel = 'E-mail*';
   static const passwordFieldLabel = 'Password*';
   static const passwordConfirmFieldLabel = 'Confirm password*';
