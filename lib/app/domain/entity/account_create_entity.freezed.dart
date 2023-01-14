@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AccountCreateEntity {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $AccountCreateEntityCopyWith<$Res> {
       _$AccountCreateEntityCopyWithImpl<$Res, AccountCreateEntity>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String username,
       DateTime birthday,
       String email,
@@ -54,17 +54,17 @@ class _$AccountCreateEntityCopyWithImpl<$Res, $Val extends AccountCreateEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? username = null,
     Object? birthday = null,
     Object? email = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$_AccountCreateEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String username,
       DateTime birthday,
       String email,
@@ -112,17 +112,17 @@ class __$$_AccountCreateEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? username = null,
     Object? birthday = null,
     Object? email = null,
     Object? password = null,
   }) {
     return _then(_$_AccountCreateEntity(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -147,14 +147,14 @@ class __$$_AccountCreateEntityCopyWithImpl<$Res>
 
 class _$_AccountCreateEntity implements _AccountCreateEntity {
   const _$_AccountCreateEntity(
-      {required this.id,
+      {this.id,
       required this.username,
       required this.birthday,
       required this.email,
       required this.password});
 
   @override
-  final int id;
+  final int? id;
   @override
   final String username;
   @override
@@ -198,14 +198,14 @@ class _$_AccountCreateEntity implements _AccountCreateEntity {
 
 abstract class _AccountCreateEntity implements AccountCreateEntity {
   const factory _AccountCreateEntity(
-      {required final int id,
+      {final int? id,
       required final String username,
       required final DateTime birthday,
       required final String email,
       required final String password}) = _$_AccountCreateEntity;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get username;
   @override

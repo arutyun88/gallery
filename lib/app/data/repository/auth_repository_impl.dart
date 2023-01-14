@@ -20,10 +20,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<AccountCreateEntity> createAccount(AccountCreateEntity entity) async {
     try {
-      final result = await _api.createAccount(
+      final createResult = await _api.createAccount(
         AccountCreateDto.toDto(entity).toJson(),
       );
-      return AccountCreateDto.fromJson(result.data).toEntity();
+      final account = AccountCreateDto.fromJson(createResult.data).toEntity();
+      await logIn(username: entity.username, password: entity.password);
+      return account;
     } catch (_) {
       rethrow;
     }

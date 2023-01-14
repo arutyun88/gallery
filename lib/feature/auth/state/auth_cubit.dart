@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gallery/app/domain/entity/account_create_entity.dart';
 import 'package:gallery/app/domain/entity/error_entity.dart';
 import 'package:gallery/app/domain/repository/auth_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -24,6 +25,20 @@ class AuthCubit extends HydratedCubit<AuthState> {
       emit(AuthState.waiting());
       try {
         await authRepository.logIn(username: username, password: password);
+        emit(AuthState.authorized());
+      } catch (error, stackTrace) {
+        addError(error, stackTrace);
+      }
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<void> createAccount(AccountCreateEntity entity) async {
+    try {
+      emit(AuthState.waiting());
+      try {
+        await authRepository.createAccount(entity);
         emit(AuthState.authorized());
       } catch (error, stackTrace) {
         addError(error, stackTrace);

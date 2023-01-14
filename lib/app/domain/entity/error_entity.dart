@@ -21,6 +21,11 @@ class ErrorEntity with _$ErrorEntity {
       try {
         return ErrorEntity(message: error.response?.data['error_description']);
       } catch (_) {
+        try {
+          return ErrorEntity(
+            message: error.response?.data['detail'],
+          );
+        } catch (_) {}
         return const ErrorEntity(message: 'Unknown error');
       }
     }

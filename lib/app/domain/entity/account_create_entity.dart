@@ -5,7 +5,7 @@ part 'account_create_entity.freezed.dart';
 @freezed
 class AccountCreateEntity with _$AccountCreateEntity {
   const factory AccountCreateEntity({
-    required int id,
+    int? id,
     required String username,
     required DateTime birthday,
     required String email,
