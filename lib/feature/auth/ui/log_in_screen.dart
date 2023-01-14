@@ -39,7 +39,7 @@ class _LogInScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) => state.whenOrNull(
-        authorized: () => Navigator.of(context).pop(),
+        authorized: (entity) => Navigator.of(context).pop(),
       ),
       child: CustomAppScaffold(
         withAppBar: true,

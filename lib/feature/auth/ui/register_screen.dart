@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) => state.whenOrNull(
-        authorized: () => Navigator.of(context).popUntil(
+        authorized: (entity) => Navigator.of(context).popUntil(
           (route) => route.isFirst,
         ),
       ),

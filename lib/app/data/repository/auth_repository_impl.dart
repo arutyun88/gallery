@@ -4,6 +4,7 @@ import 'package:gallery/app/data/field_key.dart';
 import 'package:gallery/app/domain/app_api.dart';
 import 'package:gallery/app/domain/entity/account_create_entity.dart';
 import 'package:gallery/app/domain/entity/token_entity.dart';
+import 'package:gallery/app/domain/entity/user_entity.dart';
 import 'package:gallery/app/domain/repository/auth_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,21 +19,32 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._api);
 
   @override
-  Future<AccountCreateEntity> createAccount(AccountCreateEntity entity) async {
+  Future<UserEntity> createAccount(AccountCreateEntity entity) async {
     try {
       final createResult = await _api.createAccount(
         AccountCreateDto.toDto(entity).toJson(),
       );
       final account = AccountCreateDto.fromJson(createResult.data).toEntity();
-      await logIn(username: entity.username, password: entity.password);
-      return account;
+      final userToken = await logIn(
+        username: entity.username,
+        password: entity.password ?? '',
+      );
+
+      return UserEntity(
+        id: account.id ?? -1,
+        username: account.username,
+        birthday: account.birthday,
+        email: account.email,
+        accessToken: userToken.accessToken,
+        refreshToken: userToken.refreshToken,
+      );
     } catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future<TokenEntity> logIn({
+  Future<UserEntity> logIn({
     required String username,
     required String password,
   }) async {
@@ -46,7 +58,18 @@ class AuthRepositoryImpl implements AuthRepository {
           FieldKey.grantType: FieldKey.password,
         },
       );
-      return TokenDto.fromJson(result.data).toEntity();
+      final tokens = TokenDto.fromJson(result.data).toEntity();
+      final accountResult = await _api.getAccountWhenLogIn(tokens.accessToken);
+      final account = AccountCreateDto.fromJson(accountResult.data).toEntity();
+
+      return UserEntity(
+        id: account.id ?? -1,
+        username: account.username,
+        birthday: account.birthday,
+        email: account.email,
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken,
+      );
     } catch (_) {
       rethrow;
     }

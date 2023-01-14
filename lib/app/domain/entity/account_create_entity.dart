@@ -9,6 +9,6 @@ class AccountCreateEntity with _$AccountCreateEntity {
     required String username,
     required DateTime birthday,
     required String email,
-    required String password,
+    String? password,
   }) = _AccountCreateEntity;
 }

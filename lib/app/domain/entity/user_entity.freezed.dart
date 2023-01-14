@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'account_create_entity.dart';
+part of 'user_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,37 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+UserEntity _$UserEntityFromJson(Map<String, dynamic> json) {
+  return _UserEntity.fromJson(json);
+}
+
 /// @nodoc
-mixin _$AccountCreateEntity {
-  int? get id => throw _privateConstructorUsedError;
+mixin _$UserEntity {
+  int get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
+  String get accessToken => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AccountCreateEntityCopyWith<AccountCreateEntity> get copyWith =>
+  $UserEntityCopyWith<UserEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AccountCreateEntityCopyWith<$Res> {
-  factory $AccountCreateEntityCopyWith(
-          AccountCreateEntity value, $Res Function(AccountCreateEntity) then) =
-      _$AccountCreateEntityCopyWithImpl<$Res, AccountCreateEntity>;
+abstract class $UserEntityCopyWith<$Res> {
+  factory $UserEntityCopyWith(
+          UserEntity value, $Res Function(UserEntity) then) =
+      _$UserEntityCopyWithImpl<$Res, UserEntity>;
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String username,
       DateTime birthday,
       String email,
-      String? password});
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
-class _$AccountCreateEntityCopyWithImpl<$Res, $Val extends AccountCreateEntity>
-    implements $AccountCreateEntityCopyWith<$Res> {
-  _$AccountCreateEntityCopyWithImpl(this._value, this._then);
+class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
+    implements $UserEntityCopyWith<$Res> {
+  _$UserEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -54,17 +61,18 @@ class _$AccountCreateEntityCopyWithImpl<$Res, $Val extends AccountCreateEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? username = null,
     Object? birthday = null,
     Object? email = null,
-    Object? password = freezed,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -77,52 +85,58 @@ class _$AccountCreateEntityCopyWithImpl<$Res, $Val extends AccountCreateEntity>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AccountCreateEntityCopyWith<$Res>
-    implements $AccountCreateEntityCopyWith<$Res> {
-  factory _$$_AccountCreateEntityCopyWith(_$_AccountCreateEntity value,
-          $Res Function(_$_AccountCreateEntity) then) =
-      __$$_AccountCreateEntityCopyWithImpl<$Res>;
+abstract class _$$_UserEntityCopyWith<$Res>
+    implements $UserEntityCopyWith<$Res> {
+  factory _$$_UserEntityCopyWith(
+          _$_UserEntity value, $Res Function(_$_UserEntity) then) =
+      __$$_UserEntityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String username,
       DateTime birthday,
       String email,
-      String? password});
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
-class __$$_AccountCreateEntityCopyWithImpl<$Res>
-    extends _$AccountCreateEntityCopyWithImpl<$Res, _$_AccountCreateEntity>
-    implements _$$_AccountCreateEntityCopyWith<$Res> {
-  __$$_AccountCreateEntityCopyWithImpl(_$_AccountCreateEntity _value,
-      $Res Function(_$_AccountCreateEntity) _then)
+class __$$_UserEntityCopyWithImpl<$Res>
+    extends _$UserEntityCopyWithImpl<$Res, _$_UserEntity>
+    implements _$$_UserEntityCopyWith<$Res> {
+  __$$_UserEntityCopyWithImpl(
+      _$_UserEntity _value, $Res Function(_$_UserEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? username = null,
     Object? birthday = null,
     Object? email = null,
-    Object? password = freezed,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
-    return _then(_$_AccountCreateEntity(
-      id: freezed == id
+    return _then(_$_UserEntity(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -135,26 +149,34 @@ class __$$_AccountCreateEntityCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-
-class _$_AccountCreateEntity implements _AccountCreateEntity {
-  const _$_AccountCreateEntity(
-      {this.id,
+@JsonSerializable()
+class _$_UserEntity implements _UserEntity {
+  const _$_UserEntity(
+      {required this.id,
       required this.username,
       required this.birthday,
       required this.email,
-      this.password});
+      required this.accessToken,
+      required this.refreshToken});
+
+  factory _$_UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_UserEntityFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
   final String username;
   @override
@@ -162,50 +184,65 @@ class _$_AccountCreateEntity implements _AccountCreateEntity {
   @override
   final String email;
   @override
-  final String? password;
+  final String accessToken;
+  @override
+  final String refreshToken;
 
   @override
   String toString() {
-    return 'AccountCreateEntity(id: $id, username: $username, birthday: $birthday, email: $email, password: $password)';
+    return 'UserEntity(id: $id, username: $username, birthday: $birthday, email: $email, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AccountCreateEntity &&
+            other is _$_UserEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, username, birthday, email, password);
+  int get hashCode => Object.hash(
+      runtimeType, id, username, birthday, email, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountCreateEntityCopyWith<_$_AccountCreateEntity> get copyWith =>
-      __$$_AccountCreateEntityCopyWithImpl<_$_AccountCreateEntity>(
-          this, _$identity);
+  _$$_UserEntityCopyWith<_$_UserEntity> get copyWith =>
+      __$$_UserEntityCopyWithImpl<_$_UserEntity>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserEntityToJson(
+      this,
+    );
+  }
 }
 
-abstract class _AccountCreateEntity implements AccountCreateEntity {
-  const factory _AccountCreateEntity(
-      {final int? id,
+abstract class _UserEntity implements UserEntity {
+  const factory _UserEntity(
+      {required final int id,
       required final String username,
       required final DateTime birthday,
       required final String email,
-      final String? password}) = _$_AccountCreateEntity;
+      required final String accessToken,
+      required final String refreshToken}) = _$_UserEntity;
+
+  factory _UserEntity.fromJson(Map<String, dynamic> json) =
+      _$_UserEntity.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
   String get username;
   @override
@@ -213,9 +250,11 @@ abstract class _AccountCreateEntity implements AccountCreateEntity {
   @override
   String get email;
   @override
-  String? get password;
+  String get accessToken;
+  @override
+  String get refreshToken;
   @override
   @JsonKey(ignore: true)
-  _$$_AccountCreateEntityCopyWith<_$_AccountCreateEntity> get copyWith =>
+  _$$_UserEntityCopyWith<_$_UserEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

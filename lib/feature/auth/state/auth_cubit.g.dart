@@ -21,12 +21,14 @@ Map<String, dynamic> _$$_AuthStateNotAuthorizedToJson(
 _$_AuthStateAuthorized _$$_AuthStateAuthorizedFromJson(
         Map<String, dynamic> json) =>
     _$_AuthStateAuthorized(
+      UserEntity.fromJson(json['entity'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$_AuthStateAuthorizedToJson(
         _$_AuthStateAuthorized instance) =>
     <String, dynamic>{
+      'entity': instance.entity,
       'runtimeType': instance.$type,
     };
 

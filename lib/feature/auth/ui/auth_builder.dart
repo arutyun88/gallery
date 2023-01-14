@@ -36,7 +36,7 @@ class AuthBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           notAuthorized: () => isNotAuthorized(context),
-          authorized: () => isAuthorized(context),
+          authorized: (entity) => isAuthorized(context),
           waiting: () => isNotAuthorized(context),
           error: (error) => isNotAuthorized(context),
         );

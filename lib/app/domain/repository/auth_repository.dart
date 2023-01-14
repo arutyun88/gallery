@@ -1,10 +1,11 @@
 import 'package:gallery/app/domain/entity/account_create_entity.dart';
 import 'package:gallery/app/domain/entity/token_entity.dart';
+import 'package:gallery/app/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
-  Future<AccountCreateEntity> createAccount(AccountCreateEntity entity);
+  Future<UserEntity> createAccount(AccountCreateEntity entity);
 
-  Future<TokenEntity> logIn({
+  Future<UserEntity> logIn({
     required String username,
     required String password,
   });

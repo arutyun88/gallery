@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gallery/app/domain/entity/account_create_entity.dart';
 import 'package:gallery/app/domain/entity/error_entity.dart';
+import 'package:gallery/app/domain/entity/user_entity.dart';
 import 'package:gallery/app/domain/repository/auth_repository.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -24,8 +25,11 @@ class AuthCubit extends HydratedCubit<AuthState> {
     try {
       emit(AuthState.waiting());
       try {
-        await authRepository.logIn(username: username, password: password);
-        emit(AuthState.authorized());
+        final result = await authRepository.logIn(
+          username: username,
+          password: password,
+        );
+        emit(AuthState.authorized(result));
       } catch (error, stackTrace) {
         addError(error, stackTrace);
       }
@@ -38,8 +42,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
     try {
       emit(AuthState.waiting());
       try {
-        await authRepository.createAccount(entity);
-        emit(AuthState.authorized());
+        final result = await authRepository.createAccount(entity);
+        emit(AuthState.authorized(result));
       } catch (error, stackTrace) {
         addError(error, stackTrace);
       }
@@ -59,7 +63,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
   Map<String, dynamic>? toJson(AuthState state) {
     return state
             .whenOrNull(
-              authorized: () => AuthState.authorized(),
+              authorized: (entity) => AuthState.authorized(entity),
             )
             ?.toJson() ??
         AuthState.notAuthorized().toJson();
