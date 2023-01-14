@@ -9,18 +9,21 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.type = TextInputType.text,
     this.obscure = false,
+    required this.onChanged,
   }) : super(key: key);
 
   final String labelText;
   final TextEditingController controller;
   final TextInputType type;
   final bool obscure;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextField(
+        onChanged: onChanged,
         autocorrect: false,
         obscureText: obscure,
         keyboardType: type,

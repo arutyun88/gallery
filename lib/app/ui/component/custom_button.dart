@@ -11,11 +11,13 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.type = ButtonType.simple,
+    this.enabled = true,
   }) : super(key: key);
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String title;
   final ButtonType type;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,9 @@ class CustomButton extends StatelessWidget {
                 child: Text(
                   title,
                   style: Theme.of(context).textTheme.main.apply(
-                        color: AppColors.accent,
+                        color: enabled
+                            ? AppColors.accent
+                            : AppColors.accent.withOpacity(.3),
                       ),
                 ),
               ),
@@ -40,12 +44,16 @@ class CustomButton extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: type == ButtonType.transparent
                   ? BoxDecoration(
-                      color: AppColors.transparent,
+                      color: enabled
+                          ? AppColors.transparent
+                          : AppColors.black.withOpacity(.3),
                       borderRadius: BorderRadius.circular(10.0),
                       border: Border.all(color: AppColors.black),
                     )
                   : BoxDecoration(
-                      color: AppColors.black,
+                      color: enabled
+                          ? AppColors.black
+                          : AppColors.black.withOpacity(.3),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
               child: Center(
