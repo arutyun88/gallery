@@ -9,6 +9,7 @@ abstract class AppTexts {
   static const createAccountTitle = 'Create account';
   static const createAccountButtonTitle = 'Create account';
   static const emailLabel = 'E-mail';
+  static const usernameLabel = 'Username';
   static const passwordLabel = 'Password';
   static const usernameFieldLabel = 'Username*';
   static const birthdayFieldLabel = 'Birthday';

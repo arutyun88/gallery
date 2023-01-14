@@ -18,19 +18,19 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  late TextEditingController _emailController;
+  late TextEditingController _usernameController;
   late TextEditingController _passwordController;
 
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController();
+    _usernameController = TextEditingController();
     _passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -56,8 +56,8 @@ class _LogInScreenState extends State<LogInScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomTextField(
-                      labelText: AppTexts.emailLabel,
-                      controller: _emailController,
+                      labelText: AppTexts.usernameLabel,
+                      controller: _usernameController,
                       type: TextInputType.emailAddress,
                     ),
                     CustomTextField(
@@ -100,7 +100,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void _logInOnPressed() {
     locator.get<AuthCubit>().logIn(
-          username: _emailController.text,
+          username: _usernameController.text,
           password: _passwordController.text,
         );
   }
