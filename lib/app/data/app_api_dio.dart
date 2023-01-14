@@ -40,6 +40,20 @@ class AppApiDio extends AppApi {
   }
 
   @override
+  Future<Response> getAccountWhenLogIn(String token) {
+    try {
+      dio.options.headers.addEntries(
+        {'Authorization': 'Bearer $token'}.entries,
+      );
+      Future<Response> response = dio.get(AppApi.getAccountPath);
+      dio.options.headers.removeWhere((key, value) => key == 'Authorization');
+      return response;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
   Future<Response> token(Map<String, dynamic> data) {
     try {
       return dio.get(AppApi.tokenPath, queryParameters: data);
