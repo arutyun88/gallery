@@ -11,4 +11,5 @@ abstract class AppColors {
   static const Color title = Color.fromRGBO(47, 23, 103, 1);
   static const Color subtitle = Color.fromRGBO(140, 140, 140, 1);
   static const Color grayLight = Color.fromRGBO(200, 200, 200, 1);
+  static const Color text = Color.fromRGBO(56, 56, 56, 1);
 }

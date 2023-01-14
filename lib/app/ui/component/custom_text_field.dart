@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
+import 'package:gallery/app/ui/const/app_text_style.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -26,11 +27,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         cursorHeight: 15,
         cursorColor: AppColors.accent,
-        style: const TextStyle(
-          fontSize: 15.0,
-          fontWeight: FontWeight.w400,
-          color: AppColors.black,
-        ),
+        style: Theme.of(context).textTheme.main,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(14.0),
           labelText: labelText,

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
+import 'package:gallery/app/ui/const/app_text_style.dart';
 
 enum ButtonType { simple, transparent, text }
 
@@ -27,11 +29,9 @@ class CustomButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    color: AppColors.accent,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: Theme.of(context).textTheme.main.apply(
+                        color: AppColors.accent,
+                      ),
                 ),
               ),
             )
@@ -51,13 +51,11 @@ class CustomButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    color: type == ButtonType.transparent
-                        ? AppColors.black
-                        : AppColors.white,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: Theme.of(context).textTheme.main.apply(
+                        color: type == ButtonType.transparent
+                            ? AppColors.black
+                            : AppColors.white,
+                      ),
                 ),
               ),
             ),

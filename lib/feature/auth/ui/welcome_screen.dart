@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gallery/app/ui/component/custom_app_scaffold.dart';
 import 'package:gallery/app/ui/component/custom_button.dart';
-import 'package:gallery/app/ui/const/app_colors.dart';
 import 'package:gallery/app/ui/const/app_icons.dart';
+import 'package:gallery/app/ui/const/app_text_style.dart';
 import 'package:gallery/app/ui/const/app_texts.dart';
 import 'package:gallery/feature/auth/ui/log_in_screen.dart';
 import 'package:gallery/feature/auth/ui/register_screen.dart';
@@ -38,19 +38,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
+                  Padding(
+                    padding: const EdgeInsets.only(
                       bottom: 60.0,
                       left: 16.0,
                       right: 16.0,
                     ),
                     child: Text(
                       AppTexts.welcome,
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: Theme.of(context).textTheme.title,
                     ),
                   ),
                   CustomButton(
