@@ -32,5 +32,13 @@ abstract class AppTheme {
         borderSide: const BorderSide(width: 1.0, color: AppColors.grayLight),
       ),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      elevation: 0.0,
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.accent,
+      unselectedItemColor: AppColors.subtitle,
+      selectedLabelStyle: TextStyle(fontSize: 12.0),
+      unselectedLabelStyle: TextStyle(fontSize: 12.0),
+    ),
   );
 }
