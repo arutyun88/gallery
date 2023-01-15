@@ -6,4 +6,5 @@ abstract class AppIcons {
   static const String photoIcon = 'assets/icons/photo_icon.svg';
   static const String feedIcon = 'assets/icons/feed_icon.svg';
   static const String settingsIcon = 'assets/icons/settings_icon.svg';
+  static const String cameraIcon = 'assets/icons/camera_icon.svg';
 }

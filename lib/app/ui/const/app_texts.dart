@@ -1,6 +1,8 @@
 abstract class AppTexts {
   const AppTexts._();
 
+  static const dateFormat = 'dd.MM.yyyy';
+
   static const welcome = 'Welcome!';
   static const welcomeCreate = 'Create an account';
   static const alreadyHaveAccount = 'I already have an account';
@@ -22,4 +24,15 @@ abstract class AppTexts {
   static const notValidPassword =
       'Please enter a valid password: the password must be at least 8 characters and contain at least one:\n• capital letters of the Latin alphabet\n• lowercase letters of the Latin alphabet\n• numbers\n• special character !@#*/|\\%+=<>';
   static const notValidConfirmPassword = 'Passwords do not match';
+  static const loadedTitle = 'Loaded: ';
+  static const viewsTitle = 'Views: ';
+  static const signOutTitle = 'Sign Out';
+  static const canTitle = 'You can ';
+  static const deleteTitle = 'delete your account';
+  static const changePassword = 'Change password';
+  static const oldPassword = 'Old password';
+  static const newPassword = 'New password';
+  static const confirmNewPassword = 'Confirm new password';
+  static const photoUploadTitle = 'Tap to upload';
+  static const save = 'Save';
 }
