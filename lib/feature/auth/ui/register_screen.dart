@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery/app/di/init_di.dart';
@@ -63,9 +64,7 @@ class _RegisterScreenState extends State<_RegisterScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) => state.whenOrNull(
-        authorized: (entity) => Navigator.of(context).popUntil(
-          (route) => route.isFirst,
-        ),
+        authorized: (entity) => context.router.popUntilRoot(),
       ),
       child: CustomAppScaffold(
         withAppBar: true,

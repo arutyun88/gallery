@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery/app/di/init_di.dart';
+import 'package:gallery/app/routes/router.gr.dart';
 import 'package:gallery/app/ui/component/custom_app_scaffold.dart';
 import 'package:gallery/app/ui/component/custom_button.dart';
 import 'package:gallery/app/ui/component/custom_text_field.dart';
@@ -9,7 +11,6 @@ import 'package:gallery/app/ui/const/app_text_style.dart';
 import 'package:gallery/app/ui/const/app_texts.dart';
 import 'package:gallery/feature/auth/state/auth_cubit.dart';
 import 'package:gallery/feature/auth/state/log_in_fields_validate_bloc.dart';
-import 'package:gallery/feature/auth/ui/register_screen.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _LogInScreenState extends State<_LogInScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) => state.whenOrNull(
-        authorized: (entity) => Navigator.of(context).pop(),
+        authorized: (entity) => context.router.popUntilRoot(),
       ),
       child: CustomAppScaffold(
         withAppBar: true,
@@ -72,7 +73,8 @@ class _LogInScreenState extends State<_LogInScreen> {
                         if (state is LogInFieldsValidateErrorState) {
                           return Container(
                             width: MediaQuery.of(context).size.width,
-                            padding: const EdgeInsets.all(16.0).copyWith(bottom: 0.0),
+                            padding: const EdgeInsets.all(16.0)
+                                .copyWith(bottom: 0.0),
                             child: Text(
                               state.message,
                               textAlign: TextAlign.start,
@@ -155,13 +157,7 @@ class _LogInScreenState extends State<_LogInScreen> {
         );
   }
 
-  void _createAccountOnPressed() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const RegisterScreen(),
-      ),
-    );
-  }
+  void _createAccountOnPressed() => context.router.push(const RegisterRoute());
 
   void _fieldOnChanged(String value) {
     BlocProvider.of<LogInFieldsValidateBloc>(context).add(

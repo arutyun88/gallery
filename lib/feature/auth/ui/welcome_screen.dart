@@ -1,12 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gallery/app/routes/router.gr.dart';
 import 'package:gallery/app/ui/component/custom_app_scaffold.dart';
 import 'package:gallery/app/ui/component/custom_button.dart';
 import 'package:gallery/app/ui/const/app_icons.dart';
 import 'package:gallery/app/ui/const/app_text_style.dart';
 import 'package:gallery/app/ui/const/app_texts.dart';
-import 'package:gallery/feature/auth/ui/log_in_screen.dart';
-import 'package:gallery/feature/auth/ui/register_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({
@@ -70,19 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  void _onTapToCreate() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const RegisterScreen(),
-      ),
-    );
-  }
+  void _onTapToCreate() => context.router.push(const RegisterRoute());
 
-  void _onTapToLogIn() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const LogInScreen(),
-      ),
-    );
-  }
+  void _onTapToLogIn() => context.router.push(const LogInRoute());
 }
