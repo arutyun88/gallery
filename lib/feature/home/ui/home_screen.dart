@@ -15,10 +15,11 @@ class HomeScreen extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRouter(children: [FeedRouter()]),
-        HomeRouter(children: [ProfileRoute()]),
+        HomeRouter(children: [ProfileRouter()]),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
+          elevation: 0.0,
           backgroundColor: AppColors.white,
           currentIndex: _currentChanged(tabsRouter.activeIndex),
           onTap: (index) => _onTapItem(context, index, tabsRouter),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../const/app_colors.dart';
+import 'package:gallery/app/ui/component/custom_divider.dart';
 
 class CustomAppScaffold extends StatelessWidget {
   const CustomAppScaffold({
@@ -33,12 +32,7 @@ class CustomAppScaffold extends StatelessWidget {
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (withAppBar != null)
-              Container(
-                height: 1,
-                width: MediaQuery.of(context).size.width,
-                color: AppColors.grayLight,
-              ),
+            if (withAppBar != null) const CustomDivider(),
             Expanded(child: body),
           ],
         ),

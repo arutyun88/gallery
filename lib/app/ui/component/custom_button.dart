@@ -26,17 +26,15 @@ class CustomButton extends StatelessWidget {
       minSize: 0.0,
       onPressed: onPressed,
       child: type == ButtonType.text
-          ? SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.main.apply(
-                        color: enabled
-                            ? AppColors.accent
-                            : AppColors.accent.withOpacity(.3),
-                      ),
-                ),
+          ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.main.apply(
+                      color: enabled
+                          ? AppColors.accent
+                          : AppColors.accent.withOpacity(.3),
+                    ),
               ),
             )
           : Container(

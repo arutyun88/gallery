@@ -28,7 +28,15 @@ import 'package:gallery/feature/profile/ui/profile_screen.dart';
                 AutoRoute(path: '', page: FeedScreen),
               ],
             ),
-            AutoRoute(path: 'profile', page: ProfileScreen),
+            AutoRoute(
+              path: 'profile',
+              name: 'ProfileRouter',
+              page: EmptyRouterPage,
+              children: [
+                AutoRoute(path: '', page: ProfileScreen),
+                AutoRoute(path: 'settings', page: ProfileSettingsScreen),
+              ],
+            ),
           ],
         ),
       ],
