@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gallery/feature/auth/ui/auth_builder.dart';
 import 'package:gallery/feature/auth/ui/welcome_screen.dart';
-import 'package:gallery/feature/main/main_screen.dart';
+import 'package:gallery/feature/home/ui/home_screen.dart';
 
 class Root extends StatelessWidget {
   const Root({
@@ -12,7 +12,7 @@ class Root extends StatelessWidget {
   Widget build(BuildContext context) {
     return AuthBuilder(
       isNotAuthorized: (context) => const WelcomeScreen(),
-      isAuthorized: (context) => const MainScreen(),
+      isAuthorized: (context) => const HomeScreen(),
     );
   }
 }

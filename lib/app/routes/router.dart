@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:gallery/app/ui/root.dart';
+import 'package:auto_route/empty_router_widgets.dart';
 import 'package:gallery/feature/auth/ui/log_in_screen.dart';
 import 'package:gallery/feature/auth/ui/register_screen.dart';
 import 'package:gallery/feature/auth/ui/welcome_screen.dart';
-import 'package:gallery/feature/main/main_screen.dart';
+import 'package:gallery/feature/feed/ui/feed_screen.dart';
+import 'package:gallery/feature/photo/ui/photo_screen.dart';
+import 'package:gallery/feature/profile/ui/profile_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
@@ -11,23 +14,29 @@ import 'package:gallery/feature/main/main_screen.dart';
     AutoRoute(
       path: '/',
       page: Root,
+      children: [
+        AutoRoute(
+          path: 'home',
+          name: 'HomeRouter',
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute(
+              path: 'feed',
+              name: 'FeedRouter',
+              page: EmptyRouterPage,
+              children: [
+                AutoRoute(path: '', page: FeedScreen),
+              ],
+            ),
+            AutoRoute(path: 'profile', page: ProfileScreen),
+          ],
+        ),
+      ],
     ),
-    AutoRoute(
-      path: '/home',
-      page: MainScreen,
-    ),
-    AutoRoute(
-      path: '/auth',
-      page: WelcomeScreen,
-    ),
-    AutoRoute(
-      path: '/logIn',
-      page: LogInScreen,
-    ),
-    AutoRoute(
-      path: '/register',
-      page: RegisterScreen,
-    ),
+    AutoRoute(path: 'photo', page: PhotoScreen),
+    AutoRoute(path: 'welcome', page: WelcomeScreen),
+    AutoRoute(path: 'logIn', page: LogInScreen),
+    AutoRoute(path: 'register', page: RegisterScreen),
   ],
 )
 class $AppRouter {}
