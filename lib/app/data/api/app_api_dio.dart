@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:gallery/app/data/api/auth_interceptor.dart';
 import 'package:gallery/app/domain/app_api.dart';
 import 'package:gallery/app/domain/app_config.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +17,7 @@ class AppApiDio extends AppApi {
     );
     dio = Dio(options);
     if (kDebugMode) _addInterceptor(PrettyDioLogger());
+    _addInterceptor(AuthInterceptor());
   }
 
   void _addInterceptor(Interceptor interceptor) {
@@ -28,6 +30,15 @@ class AppApiDio extends AppApi {
 
   void _deleteInterceptor(Type type) {
     dio.interceptors.removeWhere((element) => element.runtimeType == type);
+  }
+
+  @override
+  Future<Response> fetch(RequestOptions requestOptions) {
+    try {
+      return dio.fetch(requestOptions);
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override

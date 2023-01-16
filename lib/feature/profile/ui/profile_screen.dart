@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gallery/app/data/repository/auth_repository_impl.dart';
 import 'package:gallery/app/di/init_di.dart';
-import 'package:gallery/app/domain/app_api.dart';
 import 'package:gallery/app/domain/entity/user_entity.dart';
 import 'package:gallery/app/routes/router.gr.dart';
 import 'package:gallery/app/ui/component/home_scaffold.dart';
@@ -57,18 +55,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      final refreshToken =
-                          locator.get<AuthCubit>().state.whenOrNull(
-                                authorized: (entity) => entity.refreshToken,
-                              );
-                      AuthRepositoryImpl(locator.get<AppApi>())
-                          .refreshToken(refreshToken ?? '');
-                    },
+                    onTap: locator.get<AuthCubit>().refreshToken,
                     child: const Text('refresh'),
                   ),
                   const SizedBox(height: 24.0),
-
                 ],
               ),
             ),
