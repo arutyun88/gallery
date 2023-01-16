@@ -29,6 +29,7 @@ class ProfileTitleWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(

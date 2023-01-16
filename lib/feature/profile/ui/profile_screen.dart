@@ -5,6 +5,7 @@ import 'package:gallery/app/di/init_di.dart';
 import 'package:gallery/app/domain/entity/user_entity.dart';
 import 'package:gallery/app/routes/router.gr.dart';
 import 'package:gallery/app/ui/component/home_scaffold.dart';
+import 'package:gallery/app/ui/component/photo_tile.dart';
 import 'package:gallery/app/ui/const/app_icons.dart';
 import 'package:gallery/app/ui/const/app_text_style.dart';
 import 'package:gallery/feature/auth/state/auth_cubit.dart';
@@ -45,25 +46,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
           },
         ),
       ],
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfileTitleWidget(entity: entity),
-            const ProfileStatisticsWidget(),
-            Container(
-              padding: const EdgeInsets.all(40.0),
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: locator.get<AuthCubit>().refreshToken,
-                    child: const Text('refresh'),
-                  ),
-                  const SizedBox(height: 24.0),
-                ],
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                ProfileTitleWidget(entity: entity),
+                const ProfileStatisticsWidget(),
+              ],
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 10.0,
+            ),
+            sliver: SliverGrid.count(
+              childAspectRatio: 1.59,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              crossAxisCount: 2,
+              children: List.generate(
+                20,
+                (index) => PhotoTile(
+                  photo: 'https://images.pexels.com/photos'
+                      '/259915/pexels-photo-259915.jpeg',
+                  onPressed: () {},
+                ),
               ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
