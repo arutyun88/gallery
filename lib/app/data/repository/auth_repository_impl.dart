@@ -119,4 +119,30 @@ class AuthRepositoryImpl implements AuthRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> updateProfile({
+    required int id,
+    String? username,
+    DateTime? birthday,
+    String? email,
+  }) async {
+    try {
+      final Map<String, dynamic> data = {};
+      if (username != null) {
+        data.addEntries({FieldKey.username: username}.entries);
+      }
+      if (birthday != null) {
+        data.addEntries(
+            {FieldKey.birthday: birthday.toUtc().toIso8601String()}.entries);
+      }
+      if (email != null) {
+        data.addEntries({FieldKey.email: email}.entries);
+      }
+
+      await _api.updateProfile(id, data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

@@ -90,4 +90,13 @@ class AppApiDio extends AppApi {
       rethrow;
     }
   }
+
+  @override
+  Future<Response> updateProfile(int userId, Map<String, dynamic> data) {
+    try {
+      return dio.put('${AppApi.accountPath}/$userId', data: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

@@ -13,6 +13,13 @@ abstract class AuthRepository {
     required String newPassword,
   });
 
+  Future<void> updateProfile({
+    required int id,
+    String? username,
+    DateTime? birthday,
+    String? email,
+  });
+
   Future<UserEntity> logIn({
     required String username,
     required String password,

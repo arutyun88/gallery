@@ -3,6 +3,8 @@ abstract class FieldKey {
 
   static const String username = 'username';
   static const String password = 'password';
+  static const String birthday = 'birthday';
+  static const String email = 'email';
   static const String refreshToken = 'refresh_token';
   static const String clientId = 'client_id';
   static const String clientSecret = 'client_secret';

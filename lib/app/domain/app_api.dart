@@ -15,6 +15,8 @@ abstract class AppApi {
 
   Future<Response> updatePassword(int userId, Map<String, dynamic> data);
 
+  Future<Response> updateProfile(int userId, Map<String, dynamic> data);
+
   Future<Response> getAccountWhenLogIn(String token);
 
   Future<Response> token(Map<String, dynamic> data);
