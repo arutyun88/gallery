@@ -100,4 +100,23 @@ class AuthRepositoryImpl implements AuthRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> updatePassword({
+    required int id,
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      await _api.updatePassword(
+        id,
+        {
+          FieldKey.oldPassword: oldPassword,
+          FieldKey.newPassword: newPassword,
+        },
+      );
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

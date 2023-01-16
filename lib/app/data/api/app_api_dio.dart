@@ -81,4 +81,13 @@ class AppApiDio extends AppApi {
       rethrow;
     }
   }
+
+  @override
+  Future<Response> updatePassword(int userId, Map<String, dynamic> data) {
+    try {
+      return dio.put('${AppApi.updatePasswordPath}/$userId', data: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

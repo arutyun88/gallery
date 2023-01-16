@@ -7,4 +7,6 @@ abstract class FieldKey {
   static const String clientId = 'client_id';
   static const String clientSecret = 'client_secret';
   static const String grantType = 'grant_type';
+  static const String oldPassword = 'oldPassword';
+  static const String newPassword = 'newPassword';
 }

@@ -7,6 +7,12 @@ abstract class AuthRepository {
 
   Future<void> deleteAccount(int id);
 
+  Future<void> updatePassword({
+    required int id,
+    required String oldPassword,
+    required String newPassword,
+  });
+
   Future<UserEntity> logIn({
     required String username,
     required String password,
