@@ -105,6 +105,37 @@ class AuthCubit extends HydratedCubit<AuthState> {
     }
   }
 
+  Future<void> updateProfile({
+    String? username,
+    DateTime? birthday,
+    String? email,
+  }) async {
+    try {
+      final entity = state.whenOrNull(authorized: (entity) => entity);
+      if (entity != null) {
+        final result = await authRepository.updateProfile(
+          id: entity.id,
+          username: username,
+          birthday: birthday,
+          email: email,
+        );
+        emit(
+          AuthState.authorized(
+            entity.copyWith(
+              username: result.username,
+              birthday: result.birthday,
+              email: result.email,
+            ),
+          ),
+        );
+      } else {
+        logOut();
+      }
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
+    }
+  }
+
   void logOut() => emit(AuthState.notAuthorized());
 
   @override
