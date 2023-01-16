@@ -84,6 +84,27 @@ class AuthCubit extends HydratedCubit<AuthState> {
     }
   }
 
+  Future<void> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final entity = state.whenOrNull(authorized: (entity) => entity);
+      if (entity != null) {
+        await authRepository.updatePassword(
+          id: entity.id,
+          oldPassword: oldPassword,
+          newPassword: newPassword,
+        );
+        emit(AuthState.authorized(entity));
+      } else {
+        logOut();
+      }
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
+    }
+  }
+
   void logOut() => emit(AuthState.notAuthorized());
 
   @override
