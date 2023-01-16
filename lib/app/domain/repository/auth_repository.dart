@@ -13,7 +13,7 @@ abstract class AuthRepository {
     required String newPassword,
   });
 
-  Future<void> updateProfile({
+  Future<AccountCreateEntity> updateProfile({
     required int id,
     String? username,
     DateTime? birthday,

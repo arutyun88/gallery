@@ -121,7 +121,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> updateProfile({
+  Future<AccountCreateEntity> updateProfile({
     required int id,
     String? username,
     DateTime? birthday,
@@ -140,7 +140,8 @@ class AuthRepositoryImpl implements AuthRepository {
         data.addEntries({FieldKey.email: email}.entries);
       }
 
-      await _api.updateProfile(id, data);
+      final result = await _api.updateProfile(id, data);
+      return AccountCreateDto.fromJson(result.data).toEntity();
     } catch (_) {
       rethrow;
     }
