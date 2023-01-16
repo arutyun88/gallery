@@ -9,7 +9,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../feature/auth/state/auth_cubit.dart' as _i9;
-import '../data/app_api_dio.dart' as _i6;
+import '../data/api/app_api_dio.dart' as _i6;
 import '../data/app_config_impl.dart' as _i4;
 import '../data/repository/auth_repository_impl.dart' as _i8;
 import '../domain/app_api.dart' as _i5;
