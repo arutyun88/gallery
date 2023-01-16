@@ -70,6 +70,20 @@ class AuthCubit extends HydratedCubit<AuthState> {
     }
   }
 
+  Future<void> deleteAccount() async {
+    try {
+      final id = state.whenOrNull(authorized: (entity) => entity.id);
+      if (id != null) {
+        await authRepository.deleteAccount(id);
+        emit(AuthState.notAuthorized());
+      } else {
+        logOut();
+      }
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
+    }
+  }
+
   void logOut() => emit(AuthState.notAuthorized());
 
   @override
