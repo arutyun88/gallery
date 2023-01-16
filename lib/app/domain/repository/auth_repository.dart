@@ -5,6 +5,8 @@ import 'package:gallery/app/domain/entity/user_entity.dart';
 abstract class AuthRepository {
   Future<UserEntity> createAccount(AccountCreateEntity entity);
 
+  Future<void> deleteAccount(int id);
+
   Future<UserEntity> logIn({
     required String username,
     required String password,

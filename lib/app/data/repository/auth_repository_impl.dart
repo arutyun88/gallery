@@ -91,4 +91,13 @@ class AuthRepositoryImpl implements AuthRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> deleteAccount(int id) async {
+    try {
+      await _api.deleteAccount(id);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

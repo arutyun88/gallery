@@ -44,7 +44,7 @@ class AppApiDio extends AppApi {
   @override
   Future<Response> createAccount(Map<String, dynamic> data) {
     try {
-      return dio.post(AppApi.createAccountPath, data: data);
+      return dio.post(AppApi.accountPath, data: data);
     } catch (_) {
       rethrow;
     }
@@ -68,6 +68,15 @@ class AppApiDio extends AppApi {
   Future<Response> token(Map<String, dynamic> data) {
     try {
       return dio.get(AppApi.tokenPath, queryParameters: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Response> deleteAccount(int userId) {
+    try {
+      return dio.delete('${AppApi.accountPath}/$userId');
     } catch (_) {
       rethrow;
     }
