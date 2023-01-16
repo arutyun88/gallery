@@ -21,7 +21,7 @@ class ProfileSettingsTitleWidget extends StatelessWidget {
             child: CircleAvatar(
               backgroundColor: AppColors.grayLight,
               radius: 50,
-              child: SvgPicture.asset(AppIcons.cameraIcon),
+              child: SvgPicture.asset(AppIcons.cameraIcon, height: 42),
             ),
           ),
           Padding(

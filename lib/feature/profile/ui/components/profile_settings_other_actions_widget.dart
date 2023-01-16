@@ -5,6 +5,7 @@ import 'package:gallery/app/ui/const/app_colors.dart';
 import 'package:gallery/app/ui/const/app_text_style.dart';
 import 'package:gallery/app/ui/const/app_texts.dart';
 import 'package:gallery/feature/auth/state/auth_cubit.dart';
+import 'package:gallery/feature/profile/ui/components/delete_dialog_widget.dart';
 
 class ProfileSettingsOtherActionsWidget extends StatelessWidget {
   const ProfileSettingsOtherActionsWidget({
@@ -33,7 +34,7 @@ class ProfileSettingsOtherActionsWidget extends StatelessWidget {
             child: CustomButton(
               padding: EdgeInsets.zero,
               type: ButtonType.richText,
-              onPressed: () {},
+              onPressed: () => _onTapToDelete(context),
               richText: RichText(
                 text: TextSpan(
                   style: Theme.of(context).textTheme.main.apply(
@@ -57,4 +58,9 @@ class ProfileSettingsOtherActionsWidget extends StatelessWidget {
       ),
     );
   }
+
+  void _onTapToDelete(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) => const DeleteDialogWidget(),
+      );
 }

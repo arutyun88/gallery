@@ -35,4 +35,9 @@ abstract class AppTexts {
   static const confirmNewPassword = 'Confirm new password';
   static const photoUploadTitle = 'Tap to upload';
   static const save = 'Save';
+  static const cancel = 'Cancel';
+  static const deleteAccount = 'Delete account';
+  static const deleteAccountDescription =
+      'By deleting your account, you will lose access to your uploaded photos';
+  static const deletedAccount = 'Your account has been deleted';
 }
