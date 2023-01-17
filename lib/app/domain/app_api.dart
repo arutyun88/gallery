@@ -6,6 +6,7 @@ abstract class AppApi {
   static const String getAccountPath = '$accountPath/current';
   static const String updatePasswordPath = '$accountPath/update_password';
   static const String tokenPath = '/oauth/v2/token';
+  static const String photosPath = '/api/photos';
 
   Future<Response> fetch(RequestOptions requestOptions);
 
@@ -20,4 +21,6 @@ abstract class AppApi {
   Future<Response> getAccountWhenLogIn(String token);
 
   Future<Response> token(Map<String, dynamic> data);
+
+  Future<Response> getPhotos(Map<String, dynamic> data);
 }

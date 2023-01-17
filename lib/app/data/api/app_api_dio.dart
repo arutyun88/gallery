@@ -99,4 +99,13 @@ class AppApiDio extends AppApi {
       rethrow;
     }
   }
+
+  @override
+  Future<Response> getPhotos(Map<String, dynamic> data) {
+    try {
+      return dio.get(AppApi.photosPath, queryParameters: data);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }
