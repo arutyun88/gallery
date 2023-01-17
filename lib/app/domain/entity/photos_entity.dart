@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gallery/app/domain/entity/image_entity.dart';
 import 'package:gallery/app/domain/entity/photo_entity.dart';
 
 part 'photos_entity.freezed.dart';
@@ -12,6 +11,7 @@ class PhotosEntity with _$PhotosEntity {
     required int totalItems,
     required int itemsPerPage,
     required int countOfPages,
+    required int currentPage,
     required List<PhotoEntity> data,
   }) = _PhotosEntity;
 

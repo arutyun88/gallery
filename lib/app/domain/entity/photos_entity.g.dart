@@ -11,6 +11,7 @@ _$_PhotosEntity _$$_PhotosEntityFromJson(Map<String, dynamic> json) =>
       totalItems: json['totalItems'] as int,
       itemsPerPage: json['itemsPerPage'] as int,
       countOfPages: json['countOfPages'] as int,
+      currentPage: json['currentPage'] as int,
       data: (json['data'] as List<dynamic>)
           .map((e) => PhotoEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -21,5 +22,6 @@ Map<String, dynamic> _$$_PhotosEntityToJson(_$_PhotosEntity instance) =>
       'totalItems': instance.totalItems,
       'itemsPerPage': instance.itemsPerPage,
       'countOfPages': instance.countOfPages,
+      'currentPage': instance.currentPage,
       'data': instance.data,
     };

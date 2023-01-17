@@ -23,10 +23,11 @@ class PhotosDto {
 
   Map<String, dynamic> toJson() => _$PhotosDtoToJson(this);
 
-  PhotosEntity toEntity() => PhotosEntity(
+  PhotosEntity toEntity(int currentPage) => PhotosEntity(
         totalItems: totalItems,
         itemsPerPage: itemsPerPage,
         countOfPages: countOfPages,
+        currentPage: currentPage,
         data: (data as List)
             .map(
               (e) => PhotoDto.fromJson(e).toEntity(),

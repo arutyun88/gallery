@@ -26,7 +26,7 @@ class PhotoRepositoryImpl implements PhotoRepository {
           FieldKey.limit: limit,
         },
       );
-      return PhotosDto.fromJson(result.data).toEntity();
+      return PhotosDto.fromJson(result.data).toEntity(page);
     } catch (_) {
       rethrow;
     }

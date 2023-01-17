@@ -23,6 +23,7 @@ mixin _$PhotosEntity {
   int get totalItems => throw _privateConstructorUsedError;
   int get itemsPerPage => throw _privateConstructorUsedError;
   int get countOfPages => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
   List<PhotoEntity> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $PhotosEntityCopyWith<$Res> {
       {int totalItems,
       int itemsPerPage,
       int countOfPages,
+      int currentPage,
       List<PhotoEntity> data});
 }
 
@@ -60,6 +62,7 @@ class _$PhotosEntityCopyWithImpl<$Res, $Val extends PhotosEntity>
     Object? totalItems = null,
     Object? itemsPerPage = null,
     Object? countOfPages = null,
+    Object? currentPage = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +77,10 @@ class _$PhotosEntityCopyWithImpl<$Res, $Val extends PhotosEntity>
       countOfPages: null == countOfPages
           ? _value.countOfPages
           : countOfPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
       data: null == data
           ? _value.data
@@ -95,6 +102,7 @@ abstract class _$$_PhotosEntityCopyWith<$Res>
       {int totalItems,
       int itemsPerPage,
       int countOfPages,
+      int currentPage,
       List<PhotoEntity> data});
 }
 
@@ -112,6 +120,7 @@ class __$$_PhotosEntityCopyWithImpl<$Res>
     Object? totalItems = null,
     Object? itemsPerPage = null,
     Object? countOfPages = null,
+    Object? currentPage = null,
     Object? data = null,
   }) {
     return _then(_$_PhotosEntity(
@@ -126,6 +135,10 @@ class __$$_PhotosEntityCopyWithImpl<$Res>
       countOfPages: null == countOfPages
           ? _value.countOfPages
           : countOfPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
       data: null == data
           ? _value._data
@@ -142,6 +155,7 @@ class _$_PhotosEntity implements _PhotosEntity {
       {required this.totalItems,
       required this.itemsPerPage,
       required this.countOfPages,
+      required this.currentPage,
       required final List<PhotoEntity> data})
       : _data = data;
 
@@ -154,6 +168,8 @@ class _$_PhotosEntity implements _PhotosEntity {
   final int itemsPerPage;
   @override
   final int countOfPages;
+  @override
+  final int currentPage;
   final List<PhotoEntity> _data;
   @override
   List<PhotoEntity> get data {
@@ -164,7 +180,7 @@ class _$_PhotosEntity implements _PhotosEntity {
 
   @override
   String toString() {
-    return 'PhotosEntity(totalItems: $totalItems, itemsPerPage: $itemsPerPage, countOfPages: $countOfPages, data: $data)';
+    return 'PhotosEntity(totalItems: $totalItems, itemsPerPage: $itemsPerPage, countOfPages: $countOfPages, currentPage: $currentPage, data: $data)';
   }
 
   @override
@@ -178,13 +194,15 @@ class _$_PhotosEntity implements _PhotosEntity {
                 other.itemsPerPage == itemsPerPage) &&
             (identical(other.countOfPages, countOfPages) ||
                 other.countOfPages == countOfPages) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, totalItems, itemsPerPage,
-      countOfPages, const DeepCollectionEquality().hash(_data));
+      countOfPages, currentPage, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -205,6 +223,7 @@ abstract class _PhotosEntity implements PhotosEntity {
       {required final int totalItems,
       required final int itemsPerPage,
       required final int countOfPages,
+      required final int currentPage,
       required final List<PhotoEntity> data}) = _$_PhotosEntity;
 
   factory _PhotosEntity.fromJson(Map<String, dynamic> json) =
@@ -216,6 +235,8 @@ abstract class _PhotosEntity implements PhotosEntity {
   int get itemsPerPage;
   @override
   int get countOfPages;
+  @override
+  int get currentPage;
   @override
   List<PhotoEntity> get data;
   @override
