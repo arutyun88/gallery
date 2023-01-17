@@ -40,4 +40,5 @@ abstract class AppTexts {
   static const deleteAccountDescription =
       'By deleting your account, you will lose access to your uploaded photos';
   static const deletedAccount = 'Your account has been deleted';
+  static const photoNotFound = 'Photo not found';
 }
