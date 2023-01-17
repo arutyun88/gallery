@@ -9,4 +9,5 @@ abstract class AppIcons {
   static const String cameraIcon = 'assets/icons/camera_icon.svg';
   static const String infoIcon = 'assets/icons/info_icon.svg';
   static const String errorIcon = 'assets/icons/error_icon.svg';
+  static const String loaderIcon = 'assets/icons/loader_icon.svg';
 }

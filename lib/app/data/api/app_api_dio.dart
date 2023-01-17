@@ -101,8 +101,9 @@ class AppApiDio extends AppApi {
   }
 
   @override
-  Future<Response> getPhotos(Map<String, dynamic> data) {
+  Future<Response> getPhotos(Map<String, dynamic> data) async {
     try {
+      await Future.delayed(const Duration(seconds: 1));
       return dio.get(AppApi.photosPath, queryParameters: data);
     } catch (_) {
       rethrow;
