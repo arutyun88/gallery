@@ -22,33 +22,25 @@ class AuthCubit extends HydratedCubit<AuthState> {
     required String username,
     required String password,
   }) async {
+    emit(AuthState.waiting());
     try {
-      emit(AuthState.waiting());
-      try {
-        final result = await authRepository.logIn(
-          username: username,
-          password: password,
-        );
-        emit(AuthState.authorized(result));
-      } catch (error, stackTrace) {
-        addError(error, stackTrace);
-      }
-    } catch (_) {
-      rethrow;
+      final result = await authRepository.logIn(
+        username: username,
+        password: password,
+      );
+      emit(AuthState.authorized(result));
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
     }
   }
 
   Future<void> createAccount(AccountCreateEntity entity) async {
+    emit(AuthState.waiting());
     try {
-      emit(AuthState.waiting());
-      try {
-        final result = await authRepository.createAccount(entity);
-        emit(AuthState.authorized(result));
-      } catch (error, stackTrace) {
-        addError(error, stackTrace);
-      }
-    } catch (_) {
-      rethrow;
+      final result = await authRepository.createAccount(entity);
+      emit(AuthState.authorized(result));
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
     }
   }
 
