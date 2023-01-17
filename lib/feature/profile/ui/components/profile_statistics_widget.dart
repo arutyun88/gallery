@@ -6,7 +6,10 @@ import 'package:gallery/app/ui/const/app_texts.dart';
 class ProfileStatisticsWidget extends StatelessWidget {
   const ProfileStatisticsWidget({
     Key? key,
+    required this.loaded,
   }) : super(key: key);
+
+  final int loaded;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class ProfileStatisticsWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.min,
               ),
               Text(
-                '999+',
+                '$loaded',
                 style: Theme.of(context).textTheme.min.apply(
                       color: AppColors.subtitle,
                     ),

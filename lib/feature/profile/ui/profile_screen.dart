@@ -129,7 +129,7 @@ class _ProfileScreenState extends State<_ProfileScreen> {
                 child: Column(
                   children: [
                     ProfileTitleWidget(entity: entity),
-                    const ProfileStatisticsWidget(),
+                    ProfileStatisticsWidget(loaded: photos?.totalItems ?? 0),
                   ],
                 ),
               ),
