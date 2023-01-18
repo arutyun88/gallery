@@ -44,10 +44,15 @@ abstract class AppTexts {
   static const errorTitle = 'Oh shucks!';
   static const errorText =
       'Slow or no internet connection.\nPlease check your internet settings';
+  static const feedTitle = 'Feed';
+  static const photoTitle = 'Add photo';
   static const profileTitle = 'Profile';
   static const searchTitle = 'Search';
   static const newTitle = 'New';
   static const popularTitle = 'Popular';
   static const selectFromGallery = 'Select from gallery';
   static const makePhoto = 'To make a photo';
+  static const nameTitle = 'Name';
+  static const descriptionTitle = 'Description';
+  static const uploadTitle = 'Upload';
 }

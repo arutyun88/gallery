@@ -20,7 +20,7 @@ import '../../feature/auth/ui/register_screen.dart' as _i5;
 import '../../feature/auth/ui/welcome_screen.dart' as _i3;
 import '../../feature/feed/ui/feed_item_screen.dart' as _i8;
 import '../../feature/feed/ui/feed_screen.dart' as _i7;
-import '../../feature/photo/ui/photo_screen.dart' as _i2;
+import '../../feature/photo/ui/add_photo_screen.dart' as _i2;
 import '../../feature/profile/ui/profile_screen.dart' as _i9;
 import '../../feature/profile/ui/profile_settings_screen.dart' as _i10;
 import '../domain/entity/photo_entity.dart' as _i13;
@@ -38,10 +38,14 @@ class AppRouter extends _i11.RootStackRouter {
         child: const _i1.Root(),
       );
     },
-    PhotoRoute.name: (routeData) {
+    AddPhotoRoute.name: (routeData) {
+      final args = routeData.argsAs<AddPhotoRouteArgs>();
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.PhotoScreen(),
+        child: _i2.AddPhotoScreen(
+          key: args.key,
+          fileName: args.fileName,
+        ),
       );
     },
     WelcomeRoute.name: (routeData) {
@@ -161,7 +165,7 @@ class AppRouter extends _i11.RootStackRouter {
           ],
         ),
         _i11.RouteConfig(
-          PhotoRoute.name,
+          AddPhotoRoute.name,
           path: 'photo',
         ),
         _i11.RouteConfig(
@@ -193,15 +197,37 @@ class Root extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.PhotoScreen]
-class PhotoRoute extends _i11.PageRouteInfo<void> {
-  const PhotoRoute()
-      : super(
-          PhotoRoute.name,
+/// [_i2.AddPhotoScreen]
+class AddPhotoRoute extends _i11.PageRouteInfo<AddPhotoRouteArgs> {
+  AddPhotoRoute({
+    _i12.Key? key,
+    required String fileName,
+  }) : super(
+          AddPhotoRoute.name,
           path: 'photo',
+          args: AddPhotoRouteArgs(
+            key: key,
+            fileName: fileName,
+          ),
         );
 
-  static const String name = 'PhotoRoute';
+  static const String name = 'AddPhotoRoute';
+}
+
+class AddPhotoRouteArgs {
+  const AddPhotoRouteArgs({
+    this.key,
+    required this.fileName,
+  });
+
+  final _i12.Key? key;
+
+  final String fileName;
+
+  @override
+  String toString() {
+    return 'AddPhotoRouteArgs{key: $key, fileName: $fileName}';
+  }
 }
 
 /// generated route for

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gallery/app/routes/router.gr.dart';
 import 'package:gallery/app/ui/component/custom_divider.dart';
+import 'package:gallery/app/ui/component/custom_sheet_widget.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
 import 'package:gallery/app/ui/const/app_icons.dart';
+import 'package:gallery/app/ui/const/app_texts.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -34,11 +36,11 @@ class HomeScreen extends StatelessWidget {
                         ? AppColors.accent
                         : AppColors.subtitle,
                   ),
-                  label: 'Feed',
+                  label: AppTexts.feedTitle,
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(AppIcons.photoIcon),
-                  label: 'Add photo',
+                  label: AppTexts.photoTitle,
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
@@ -47,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                         ? AppColors.accent
                         : AppColors.subtitle,
                   ),
-                  label: 'Profile',
+                  label: AppTexts.profileTitle,
                 ),
               ],
             ),
@@ -59,7 +61,17 @@ class HomeScreen extends StatelessWidget {
 
   void _onTapItem(BuildContext context, int index, TabsRouter tabsRouter) {
     if (index == 1) {
-      context.navigateTo(const PhotoRoute());
+      showModalBottomSheet(
+        backgroundColor: AppColors.transparent,
+        context: context,
+        builder: (context) => const CustomSheetWidget(),
+      ).then(
+        (value) {
+          if (value != null) {
+            context.navigateTo(AddPhotoRoute(fileName: value ?? ''));
+          }
+        },
+      );
     } else if (index == 2) {
       tabsRouter.setActiveIndex(1);
     } else {

@@ -6,7 +6,7 @@ import 'package:gallery/feature/auth/ui/register_screen.dart';
 import 'package:gallery/feature/auth/ui/welcome_screen.dart';
 import 'package:gallery/feature/feed/ui/feed_screen.dart';
 import 'package:gallery/feature/feed/ui/feed_item_screen.dart';
-import 'package:gallery/feature/photo/ui/photo_screen.dart';
+import 'package:gallery/feature/photo/ui/add_photo_screen.dart';
 import 'package:gallery/feature/profile/ui/profile_screen.dart';
 import 'package:gallery/feature/profile/ui/profile_settings_screen.dart';
 
@@ -44,7 +44,7 @@ import 'package:gallery/feature/profile/ui/profile_settings_screen.dart';
         ),
       ],
     ),
-    AutoRoute(path: 'photo', page: PhotoScreen),
+    AutoRoute(path: 'photo', page: AddPhotoScreen),
     AutoRoute(path: 'welcome', page: WelcomeScreen),
     AutoRoute(path: 'logIn', page: LogInScreen),
     AutoRoute(path: 'register', page: RegisterScreen),
