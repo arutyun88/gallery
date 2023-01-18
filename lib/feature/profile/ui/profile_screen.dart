@@ -145,6 +145,7 @@ class _ProfileScreenState extends State<_ProfileScreen> {
         },
         builder: (context, state) {
           return CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             controller: scrollController,
             slivers: [
               if (isRefresh) const SliverToBoxAdapter(child: CustomLoader()),

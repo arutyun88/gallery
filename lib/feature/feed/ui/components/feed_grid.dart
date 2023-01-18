@@ -79,6 +79,7 @@ class _FeedGridState extends State<FeedGrid> {
       builder: (context, state) {
         if (photos != null) {
           return GridView.count(
+            physics: const BouncingScrollPhysics(),
             controller: scrollController,
             childAspectRatio: 1.59,
             mainAxisSpacing: 10,
