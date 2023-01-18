@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
     this.obscure = false,
     required this.onChanged,
     this.isDate = false,
+    this.suffixIcon,
   }) : super(key: key);
 
   final String labelText;
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscure;
   final Function(String) onChanged;
   final bool isDate;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(14.0),
           labelText: labelText,
+          suffixIcon: suffixIcon,
         ),
       ),
     );
