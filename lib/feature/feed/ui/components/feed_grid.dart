@@ -6,6 +6,7 @@ import 'package:gallery/app/domain/app_config.dart';
 import 'package:gallery/app/domain/entity/photo_entity.dart';
 import 'package:gallery/app/domain/entity/photos_entity.dart';
 import 'package:gallery/app/routes/router.gr.dart';
+import 'package:gallery/app/ui/component/custom_loader.dart';
 import 'package:gallery/app/ui/component/error_widget.dart';
 import 'package:gallery/app/ui/component/photo_tile.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
@@ -78,31 +79,41 @@ class _FeedGridState extends State<FeedGrid> {
       },
       builder: (context, state) {
         if (photos != null) {
-          return GridView.count(
-            physics: const BouncingScrollPhysics(),
-            controller: scrollController,
-            childAspectRatio: 1.59,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            crossAxisCount: 2,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 30.0,
-            ),
-            children: List.generate(
-              photos!.data.length,
-              (index) => PhotoTile(
-                photo: _getUrl(photos!.data[index]),
-                onPressed: () {
-                  context.navigateTo(
-                    FeedItemRoute(
-                      feedId: photos!.data[index].id,
-                      photo: photos!.data[index],
+          return Column(
+            children: [
+              if (isRefresh) const CustomLoader(),
+              Expanded(
+                child: GridView.count(
+                  physics: const BouncingScrollPhysics(),
+                  controller: scrollController,
+                  childAspectRatio: 1.59,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  crossAxisCount: 2,
+                  padding: EdgeInsets.only(
+                    left: 16.0,
+                    right: 16.0,
+                    top: isRefresh ? 0.0 : 30.0,
+                    bottom: loading ? 0.0 : 30.0,
+                  ),
+                  children: List.generate(
+                    photos!.data.length,
+                    (index) => PhotoTile(
+                      photo: _getUrl(photos!.data[index]),
+                      onPressed: () {
+                        context.navigateTo(
+                          FeedItemRoute(
+                            feedId: photos!.data[index].id,
+                            photo: photos!.data[index],
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
-            ),
+              if (loading) CustomLoader(color: loader),
+            ],
           );
         } else if (isError) {
           return const CustomErrorWidget();

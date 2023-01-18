@@ -158,9 +158,11 @@ class _ProfileScreenState extends State<_ProfileScreen> {
                 ),
               ),
               SliverPadding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 10.0,
+                padding: EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  top: isRefresh ? 0.0 : 30.0,
+                  bottom: loading ? 0.0 : 30.0,
                 ),
                 sliver: photos != null
                     ? SliverGrid.count(
