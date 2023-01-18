@@ -41,4 +41,8 @@ abstract class AppTexts {
       'By deleting your account, you will lose access to your uploaded photos';
   static const deletedAccount = 'Your account has been deleted';
   static const photoNotFound = 'Photo not found';
+  static const errorTitle = 'Oh shucks!';
+  static const profileTitle = 'Profile';
+  static const errorText =
+      'Slow or no internet connection.\nPlease check your internet settings';
 }

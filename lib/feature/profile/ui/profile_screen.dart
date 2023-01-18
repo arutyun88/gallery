@@ -4,15 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gallery/app/di/init_di.dart';
 import 'package:gallery/app/domain/app_config.dart';
+import 'package:gallery/app/domain/entity/photo_entity.dart';
 import 'package:gallery/app/domain/entity/photos_entity.dart';
 import 'package:gallery/app/domain/entity/user_entity.dart';
 import 'package:gallery/app/domain/repository/photo_repository.dart';
 import 'package:gallery/app/routes/router.gr.dart';
+import 'package:gallery/app/ui/component/custom_loader.dart';
+import 'package:gallery/app/ui/component/error_widget.dart';
 import 'package:gallery/app/ui/component/home_scaffold.dart';
 import 'package:gallery/app/ui/component/photo_tile.dart';
 import 'package:gallery/app/ui/const/app_colors.dart';
 import 'package:gallery/app/ui/const/app_icons.dart';
 import 'package:gallery/app/ui/const/app_text_style.dart';
+import 'package:gallery/app/ui/const/app_texts.dart';
 import 'package:gallery/feature/auth/state/auth_cubit.dart';
 import 'package:gallery/feature/photo/state/photos_cubit.dart';
 import 'package:gallery/feature/profile/ui/components/profile_statistics_widget.dart';
@@ -43,10 +47,12 @@ class _ProfileScreenState extends State<_ProfileScreen> {
   late UserEntity? entity;
   late ScrollController scrollController;
   bool loading = true;
+  bool isRefresh = false;
   Color loaderColor = AppColors.grayLight;
 
   PhotosEntity? photos;
   bool hasMore = true;
+  bool isError = false;
 
   @override
   void initState() {
@@ -77,13 +83,19 @@ class _ProfileScreenState extends State<_ProfileScreen> {
     loading = false;
   }
 
+  void refresh() async {
+    isRefresh = true;
+    await context.read<PhotosCubit>().getPhotos(limit: 10, page: 1);
+    isRefresh = false;
+  }
+
   void _scrollListener() {
     if (scrollController.position.pixels < -100 && !loading) {
-      photos = null;
-      addPhotos();
+      refresh();
     } else if (scrollController.position.pixels >=
             scrollController.position.maxScrollExtent * .80 &&
-        !loading) {
+        !loading &&
+        photos != null) {
       if (hasMore) {
         addPhotos();
       }
@@ -93,21 +105,27 @@ class _ProfileScreenState extends State<_ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
-      title: Text('Profile', style: Theme.of(context).textTheme.main),
+      title: Text(
+        AppTexts.profileTitle,
+        style: Theme.of(context).textTheme.main,
+      ),
       actions: [
         IconButton(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           icon: SvgPicture.asset(AppIcons.settingsIcon),
-          onPressed: () {
-            context.navigateTo(const ProfileSettingsRoute());
-          },
+          onPressed: () => context.navigateTo(const ProfileSettingsRoute()),
         ),
       ],
       body: BlocConsumer<PhotosCubit, PhotosState>(
         listener: (context, state) {
           state.whenOrNull(
             received: (entity) {
+              isError = false;
               hasMore = entity.currentPage != entity.countOfPages;
+              if (entity.currentPage == 1) {
+                photos = null;
+                isError = false;
+              }
               if (photos == null) {
                 photos = entity;
               } else {
@@ -119,12 +137,17 @@ class _ProfileScreenState extends State<_ProfileScreen> {
                 );
               }
             },
+            error: (error) {
+              loading = false;
+              isError = true;
+            },
           );
         },
         builder: (context, state) {
           return CustomScrollView(
             controller: scrollController,
             slivers: [
+              if (isRefresh) const SliverToBoxAdapter(child: CustomLoader()),
               SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -147,30 +170,27 @@ class _ProfileScreenState extends State<_ProfileScreen> {
                         children: List.generate(
                           photos!.data.length,
                           (index) => PhotoTile(
-                            photo:
-                                '${locator.get<AppConfig>().baseUrl}/media/${photos!.data[index].image.name}',
+                            photo: _getUrl(photos!.data[index]),
                             onPressed: () {},
                           ),
                         ),
                       )
-                    : null,
+                    : isError
+                        ? const SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: CustomErrorWidget(),
+                          )
+                        : null,
               ),
               if (loading)
-                SliverToBoxAdapter(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: SvgPicture.asset(
-                        AppIcons.loaderIcon,
-                        color: loaderColor,
-                      ),
-                    ),
-                  ),
-                ),
+                SliverToBoxAdapter(child: CustomLoader(color: loaderColor)),
             ],
           );
         },
       ),
     );
   }
+
+  String _getUrl(PhotoEntity data) =>
+      '${locator.get<AppConfig>().baseUrl}/media/${data.image.name}';
 }

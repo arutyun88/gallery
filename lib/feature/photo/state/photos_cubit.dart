@@ -28,4 +28,10 @@ class PhotosCubit extends Cubit<PhotosState> {
       addError(error, stackTrace);
     }
   }
+
+  @override
+  void addError(Object error, [StackTrace? stackTrace]) {
+    emit(PhotosState.error(ErrorEntity.fromException(error)));
+    super.addError(error, stackTrace);
+  }
 }
