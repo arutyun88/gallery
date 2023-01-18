@@ -37,6 +37,7 @@ import 'package:gallery/feature/profile/ui/profile_settings_screen.dart';
               page: EmptyRouterPage,
               children: [
                 AutoRoute(path: '', page: ProfileScreen),
+                AutoRoute(path: ':feedId', page: FeedItemScreen),
                 AutoRoute(path: 'settings', page: ProfileSettingsScreen),
               ],
             ),

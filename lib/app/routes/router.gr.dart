@@ -154,6 +154,11 @@ class AppRouter extends _i11.RootStackRouter {
                       parent: ProfileRouter.name,
                     ),
                     _i11.RouteConfig(
+                      FeedItemRoute.name,
+                      path: ':feedId',
+                      parent: ProfileRouter.name,
+                    ),
+                    _i11.RouteConfig(
                       ProfileSettingsRoute.name,
                       path: 'settings',
                       parent: ProfileRouter.name,

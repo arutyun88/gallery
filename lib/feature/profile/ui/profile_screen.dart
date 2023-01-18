@@ -174,7 +174,14 @@ class _ProfileScreenState extends State<_ProfileScreen> {
                           photos!.data.length,
                           (index) => PhotoTile(
                             photo: _getUrl(photos!.data[index]),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.navigateTo(
+                                FeedItemRoute(
+                                  feedId: photos!.data[index].id,
+                                  photo: photos!.data[index],
+                                ),
+                              );
+                            },
                           ),
                         ),
                       )
