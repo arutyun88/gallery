@@ -48,4 +48,6 @@ abstract class AppTexts {
   static const searchTitle = 'Search';
   static const newTitle = 'New';
   static const popularTitle = 'Popular';
+  static const selectFromGallery = 'Select from gallery';
+  static const makePhoto = 'To make a photo';
 }
