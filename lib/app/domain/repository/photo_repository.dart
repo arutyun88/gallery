@@ -4,5 +4,7 @@ abstract class PhotoRepository {
   Future<PhotosEntity> getPhotos({
     required int limit,
     required int page,
+    bool? isPopular,
+    bool? isNew,
   });
 }

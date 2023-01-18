@@ -14,4 +14,6 @@ abstract class FieldKey {
   static const String newPassword = 'newPassword';
   static const String page = 'page';
   static const String limit = 'limit';
+  static const String isNew = 'new';
+  static const String isPopular = 'popular';
 }

@@ -16,12 +16,16 @@ class PhotosCubit extends Cubit<PhotosState> {
   Future<void> getPhotos({
     required int limit,
     required int page,
+    bool? isPopular,
+    bool? isNew,
   }) async {
     emit(PhotosState.waiting());
     try {
       final result = await photoRepository.getPhotos(
         limit: limit,
         page: page,
+        isNew: isNew,
+        isPopular: isPopular,
       );
       emit(PhotosState.received(result));
     } catch (error, stackTrace) {

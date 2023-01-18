@@ -17,15 +17,21 @@ class PhotoRepositoryImpl implements PhotoRepository {
   Future<PhotosEntity> getPhotos({
     required int limit,
     required int page,
+    bool? isPopular,
+    bool? isNew,
   }) async {
     try {
-      final result = await _api.getPhotos(
-        {
-          FieldKey.userId: userIdByPhoto,
-          FieldKey.page: page,
-          FieldKey.limit: limit,
-        },
-      );
+      Map<String, dynamic> data = {
+        FieldKey.userId: userIdByPhoto,
+        FieldKey.page: page,
+        FieldKey.limit: limit,
+      };
+      if (isPopular == true) {
+        data.addAll({FieldKey.isPopular: isPopular});
+      } else if (isNew == true) {
+        data.addAll({FieldKey.isNew: isNew});
+      }
+      final result = await _api.getPhotos(data);
       return PhotosDto.fromJson(result.data).toEntity(page);
     } catch (_) {
       rethrow;

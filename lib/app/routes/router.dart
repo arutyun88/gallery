@@ -5,8 +5,10 @@ import 'package:gallery/feature/auth/ui/log_in_screen.dart';
 import 'package:gallery/feature/auth/ui/register_screen.dart';
 import 'package:gallery/feature/auth/ui/welcome_screen.dart';
 import 'package:gallery/feature/feed/ui/feed_screen.dart';
+import 'package:gallery/feature/feed/ui/feed_item_screen.dart';
 import 'package:gallery/feature/photo/ui/photo_screen.dart';
 import 'package:gallery/feature/profile/ui/profile_screen.dart';
+import 'package:gallery/feature/profile/ui/profile_settings_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
@@ -26,6 +28,7 @@ import 'package:gallery/feature/profile/ui/profile_screen.dart';
               page: EmptyRouterPage,
               children: [
                 AutoRoute(path: '', page: FeedScreen),
+                AutoRoute(path: ':feedId', page: FeedItemScreen),
               ],
             ),
             AutoRoute(
